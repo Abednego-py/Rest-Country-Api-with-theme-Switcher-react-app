@@ -1,0 +1,9 @@
+$background : dark;
+
+a:-webkit-any-link {
+    @if $background == dark {
+        color: hsl(207, 26%, 17%);
+    } @else {
+        color: #fff;
+    }
+}
