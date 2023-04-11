@@ -1,0 +1,275 @@
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#root {
+    margin: 0;
+    padding: 0;
+}
+.background-dark {
+    background-color: hsl(207, 26%, 17%);
+    color: hsl(0, 0%, 100%);
+    background-size: cover;
+    margin-top: 0;
+}
+.bg-dark {
+    height: 100vh;
+    color: #fff;
+}
+.background-light {
+    background-color: hsl(0, 0%, 98%);
+}
+
+/*** flags styles **/
+.container {
+    margin-top: -30px;
+    margin-left: 10%;
+}
+
+.row>* {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20%;
+    grid-template-rows: 320px 320px 320px;
+    grid-auto-rows: 320px;
+    grid-gap: 50px;
+}
+.row-items {
+    cursor: pointer;
+    box-shadow: 0.5px 0.5px 0.5px 0.5px lightgrey;
+    border: none;
+    text-decoration: none;
+}
+Link {
+    text-decoration: none;
+}
+.row-items:hover {
+    transform: translateX(30);
+}
+.row-items img {
+    width: 100%;
+    height: 53%;
+}
+.countryInfo {
+    margin-left: 10%;
+    margin-top: 5px;
+    text-decoration: none !important;
+}
+
+.countryInfo h5:hover p:hover{
+    text-decoration: none;
+}
+.countryInfo span, h5 {
+    font-weight: 500;
+    text-decoration: none;
+}
+.countryInfo p {
+    line-height: 10px;
+    text-decoration: none;
+}
+.countryInfo h5 {
+    margin-bottom: 20px;
+    font-size: 1.3em;
+}
+
+.text-dark {
+    color: black;
+}
+
+.text-light {
+    color: #fff;
+}
+
+
+/** Header Styles ***/
+.header {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 30px;
+    padding-top: 30px;
+    width: 100%;
+    box-shadow: 1px 1px 1px 1px grey;
+}
+
+.container-fluid  {
+    /* border-bottom: inset; */
+    width: 100%;
+}
+.header h3 {
+    margin-left: 2%;
+}
+
+.section-1 input, select,span{
+    height: 40px;
+}
+.section-1 input, select {
+    margin-left:20px;
+    margin-bottom: 20px;
+}
+.mode {
+    display: inline-flex;
+    position: relative;
+    left: 65%;
+    cursor: pointer;
+}
+.mode svg {
+    position: relative;
+    top: 5px;
+    margin-right: 10px;
+}
+
+input {
+    cursor: pointer;
+    width: 300px;
+    color: black;
+    font-size: 1.3em;
+    position: relative;
+        left: -40px;
+        top: -20px;
+    padding-left: 30px;
+    border: none;
+}
+
+.search {
+    box-shadow: 1px 1px 1px 1px lightgrey;
+        border: none;
+        height: 40px;
+        padding: 20px;
+        width: 300px;
+        position: relative;
+        left: 50px;
+        top: 5px;
+}
+i {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    z-index: 1;
+    left: 10px;
+    top: 10px;
+}
+
+select {
+    box-shadow: 1px 1px 1px 1px lightgrey;
+    border: none;
+    height: 40px;
+    float: right;
+    position: relative;
+    top:-85px;
+    left: -120px;
+    width: 150px;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.filterName-dark {
+    color: black;
+}
+
+.filterName-light {
+    color: black;
+}
+
+.goBack {
+    border: 1px solid black;
+    display: inline-flex;
+    width: 7%;
+    height: 30px;
+    box-shadow: 1px 1px 1px 1px lightgrey;
+    border: none;
+    margin: 20px;
+}
+.goBack svg {
+    margin-top: 5px;
+    margin-left: 7px;
+    margin-right: 3px;
+}
+a:-webkit-any-link {
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  /** country.js Styles **/
+
+  .container-fluid_ {
+    height: 100vh;
+    overflow: hidden;
+  }
+  .row_ {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    margin-top: 3%;
+  }
+  .row_ .col-5 {
+    width: 40%;
+    flex-wrap: wrap;
+  }
+
+  .row_ .content {
+    margin-left: -200px;
+  }
+
+  .col-5 img {
+    height: 250px;
+    width: 330px;
+  }
+
+  .content h3 {
+    margin-left: 75px;
+    font-weight: 700;
+  }
+
+  .row_ p {
+    font-weight: 600;
+  }
+  .row_ span {
+    font-weight: 100;
+    font-style: oblique;
+  }
+
+  .col__ {
+    margin-left: 50px;
+  }
+@media screen and (max-width : 768px)  {
+    .row>* {
+        display: inline-flex;
+        flex-direction: column;
+    }
+    .section-1 {
+        display: inline-block !important;
+    }
+    input {
+        padding: 20px;
+        padding-right: 40px;
+        display: block;
+        width: 180%;
+    }
+    input.col-3 {
+        width: 100%;
+    }
+    .section-1 span{
+        display: none;
+    }
+    .section-1 select {
+        display: block;
+        width: 80%;
+        margin: 10px;
+    }
+    .header {
+        width:100vw;
+        display: block;
+    }
+    .header h3 {
+        font-size: 20px
+    }
+    .mode {
+        position: absolute;
+        top: 25px;
+    }
+    .goBack {
+        width: 20%;
+        height: 5%;
+    }
+}
