@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Country from './components/Country';
-// import Header from './components/Header';
+import NotFound from './components/NotFound';
 
 
     const rootElement = document.getElementById("root");
@@ -13,6 +13,7 @@ import Country from './components/Country';
         <Routes>
           <Route path='/' element={<App />} />
           <Route path='/country/:id' element={<Country />} />
+             <Route path="*" element={<NotFound />} />
         </Routes>
       </Router> , 
     

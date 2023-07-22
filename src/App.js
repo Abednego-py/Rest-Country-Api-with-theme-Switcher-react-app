@@ -3,14 +3,16 @@ import './App.css';
 import Flags from './components/Flags';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './components/Header';
-import Country from './components/Country';
+import Loading from './components/Loading';
 
 function App() {
 
   const getCountryData = async () => {
+    setIsLoading(true)
     const response = await fetch('https://restcountries.com/v3.1/all')
     const responseJson =await response.json();
     setCountry(responseJson)
+    setIsLoading(false)
   }  
 
 
@@ -20,6 +22,7 @@ localStorage.getItem('mode') : 'Light Mode')
 
 const [searchValue, setSearchValue] = useState('')
 let [filterValue, setFilterValue] = useState('')
+const [isLoading, setIsLoading] = useState(false)
 const region = ['Africa', 'America', 'Asia', 'Europe', 'Oceania']
 
 
@@ -99,7 +102,12 @@ else{
      </div>
 <div className='container pb-4'>
   <div className="row grid-cont">
-<Flags country={country} mode={mode}/>
+    {isLoading? (
+      <Loading></Loading>
+    ) : (
+      <Flags country={country} mode={mode} />
+    )}
+
 </div>
 </div>
    </div>

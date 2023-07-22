@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css'
 import Header from './Header';
+import Loading from './Loading';
 
 export default function Country() {
   const [mode, changeMode] = useState(localStorage.getItem('mode') != null ?
@@ -31,13 +32,13 @@ export default function Country() {
       }
 
   const [countryName, getCountryData] = useState([])
-
+  const [isLoading, setIsLoading] = useState(true)
   const getCountry = async () => {
     const url = `https://restcountries.com/v3.1/name/${queryName}` 
     const response = await fetch(url)
     const responseJson =await response.json()
     getCountryData(responseJson)
-
+    setIsLoading(false)
     console.log(responseJson)
     }
 
@@ -64,36 +65,37 @@ export default function Country() {
       <p>Back</p>
     </div>
     </Link>
-
+    {!isLoading ?
+    <> 
       {countryName.map((countryName, index) => 
         <div className="row_" key={index}>
 
         <div className="col-5">
-          <img src={countryName.flags.png} alt={countryName.flags.alt} />
+          <img src={countryName?.flags.png} alt={countryName?.flags.alt} />
         </div>
    
       <div className="col-5 content">
-          <h3>{countryName.name.common}</h3> 
+          <h3>{countryName?.name.common}</h3> 
         
         <div className="row_ row2">
           <div className="col_">
-                {countryName.name.nativeName.eng ? 
+                {countryName?.name?.nativeName?.eng ? 
             (
-                    <p>Native Name : <span>{countryName.name.nativeName.eng.common}</span></p>
+                    <p>Native Name : <span>{countryName?.name?.nativeName?.eng?.common}</span></p>
             ) : 
               (
                 <p></p>
               )}
             
-                <p>Population : <span>{countryName.population}</span> </p>
-                <p>Region : <span>{countryName.region}</span></p>
-                <p>Sub Region : <span>{countryName.subregion}</span></p>
-                <p>Capital : <span>{countryName.capital[0]}</span></p>
+                <p>Population : <span>{countryName?.population}</span> </p>
+                <p>Region : <span>{countryName?.region}</span></p>
+                <p>Sub Region : <span>{countryName?.subregion}</span></p>
+                {/* <p>Capital : <span>{countryName?.capital[0]}</span></p> */}
           </div>
             <div className="col__">
-                <p>Top Level Domain : <span>{countryName.tld[0]}</span> </p>
-                <p>Currencies : <span>{countryName.currencies[Object.keys(countryName.currencies)[0]]['name']}</span></p>
-              <p>Language : <span>{countryName.languages[Object.keys(countryName.languages)[0]]}</span></p>
+                <p>Top Level Domain : <span>{countryName?.tld[0]}</span> </p>
+                <p>Currencies : <span>{countryName?.currencies[Object.keys(countryName?.currencies)[0]]['name']}</span></p>
+              <p>Language : <span>{countryName?.languages[Object.keys(countryName?.languages)[0]]}</span></p>
             </div>
         </div>
 
@@ -101,6 +103,9 @@ export default function Country() {
 
     </div>
       )}
+      </>
+    : <Loading></Loading>
+    }
     </div>
   );
 }
