@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Rest Country React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This app pulls data from a countries API and displays it dynamically. Users can view details of a country when they click on any country flag
 
 
 The project uses a rest api 
