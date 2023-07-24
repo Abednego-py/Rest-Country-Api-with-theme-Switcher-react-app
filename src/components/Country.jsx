@@ -45,7 +45,7 @@ export default function Country() {
     useEffect(()=> {
       getCountry()
       // localStorage.setItem('mode', mode)
-    }, [])
+    })
 
 
   return (
@@ -68,7 +68,7 @@ export default function Country() {
     {!isLoading ?
     <> 
       {countryName.map((countryName, index) => 
-        <div className="row_" key={index}>
+        <div className="row_ details-cont" key={index}>
 
         <div className="col-5">
           <img src={countryName?.flags.png} alt={countryName?.flags.alt} />

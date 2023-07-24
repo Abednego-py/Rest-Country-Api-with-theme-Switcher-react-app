@@ -23,6 +23,14 @@
 }
 
 /*** flags styles **/
+.row-items {
+    transition: transform 0.3s ease;
+    transform-origin: center center;
+}
+.row-items:hover {
+    text-decoration: none;
+    transform: scale(1.1);
+}
 .container {
     margin-top: -30px;
     margin-left: 10%;
@@ -141,6 +149,10 @@ input {
         left: 50px;
         top: 5px;
 }
+
+.search-input {
+    color: black;
+}
 i {
     position: absolute;
     width: 10px;
@@ -201,6 +213,7 @@ a:-webkit-any-link {
     height: 100%;
     justify-content: center;
     margin-top: 3%;
+    text-decoration: none;
   }
   .row_ .col-5 {
     width: 40%;
@@ -208,7 +221,7 @@ a:-webkit-any-link {
   }
 
   .row_ .content {
-    margin-left: -200px;
+    margin-left: 0px;
   }
 
   .col-5 img {
@@ -232,19 +245,30 @@ a:-webkit-any-link {
   .col__ {
     margin-left: 50px;
   }
+
+  /*** Pagination **/
+  .pagination button {
+    width: 15%;
+    height: 10%;
+    color: black;
+  }
 @media screen and (max-width : 768px)  {
     .row>* {
         display: inline-flex;
         flex-direction: column;
     }
     .section-1 {
-        display: inline-block !important;
+        display: block !important;
     }
     input {
         padding: 20px;
         padding-right: 40px;
         display: block;
         width: 180%;
+    }
+    .search {
+        margin-top: 3%;
+        margin-left: 5%;
     }
     input.col-3 {
         width: 100%;
@@ -254,8 +278,8 @@ a:-webkit-any-link {
     }
     .section-1 select {
         display: block;
-        width: 80%;
-        margin: 10px;
+        width: 50%;
+        margin-top: 25%;
     }
     .header {
         width:100vw;
@@ -271,5 +295,11 @@ a:-webkit-any-link {
     .goBack {
         width: 20%;
         height: 5%;
+    }
+    .details-cont {
+        display: block;
+    }
+    .details-cont .col-5 {
+        margin-left: 13%;
     }
 }

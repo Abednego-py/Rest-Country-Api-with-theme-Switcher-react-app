@@ -13,7 +13,9 @@ else{
 }
   return (
     <div className='flag-cont'>
-      {country.map((flag , index)=> <div className='row-items' key={index}>
+      {country.map((flag, index) => <div className='row-items' key={index} style={{
+        'textDecoration': 'none'
+      }}>
         
         <Link to={`/country/${flag.name.common}`} onClick={
         () => {

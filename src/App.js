@@ -4,17 +4,15 @@ import Flags from './components/Flags';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './components/Header';
 import Loading from './components/Loading';
+import Pagination from './components/Pagination';
 
 function App() {
 
-  const getCountryData = async () => {
-    setIsLoading(true)
-    const response = await fetch('https://restcountries.com/v3.1/all')
-    const responseJson =await response.json();
-    setCountry(responseJson)
-    setIsLoading(false)
-  }  
+  const ITEMS_PER_PAGE = 12;
 
+
+ 
+const [currentPage, setCurrentPage] = useState(1);
 
 const [country, setCountry] = useState([])
 const [mode, changeMode] = useState(localStorage.getItem('mode') != null? 
@@ -25,18 +23,38 @@ let [filterValue, setFilterValue] = useState('')
 const [isLoading, setIsLoading] = useState(false)
 const region = ['Africa', 'America', 'Asia', 'Europe', 'Oceania']
 
+  const indexOfLastItem = currentPage * ITEMS_PER_PAGE;
+  const indexOfFirstItem = indexOfLastItem - ITEMS_PER_PAGE;
+  const currentItems = country.slice(indexOfFirstItem, indexOfLastItem);
+
+   const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+// calls to the API
+const getCountryData = async () => {
+    setIsLoading(true)
+    const response = await fetch('https://restcountries.com/v3.1/all')
+    const responseJson =await response.json();
+    setCountry(responseJson)
+    setIsLoading(false)
+  } 
 
 const getFilter = async (filter) => {
+setIsLoading(true)
 const url = `https://restcountries.com/v3.1/region/${filter}`
 const response = await fetch(url)
 const resJson = await response.json()
 setCountry(resJson)
+  setIsLoading(false)
 }
 const getCountry = async (searchValue) => {
+setIsLoading(true)
 const url = `https://restcountries.com/v3.1/name/${searchValue}` 
 const response = await fetch(url)
 const responseJson =await response.json()
 setCountry(responseJson)
+  setIsLoading(false)
 }
 useEffect(()=> {
   if(!searchValue && (!filterValue || filterValue=== '')){
@@ -80,7 +98,7 @@ else{
 
       <div className="search">
           <i class="fa fa-search" aria-hidden="true"></i>
-          <input type="text" placeholder='Search for a country' className='col-3' value={searchValue}
+          <input type="text" placeholder='Search for a country' className='col-3 search-input' value={searchValue}
             onChange={(e) => {
               setSearchValue(e.target.value)
             }}>
@@ -105,10 +123,17 @@ else{
     {isLoading? (
       <Loading></Loading>
     ) : (
-      <Flags country={country} mode={mode} />
+      <Flags country={currentItems} mode={mode} />
     )}
 
 </div>
+
+  <Pagination
+        currentPage={currentPage}
+        totalPages={Math.ceil(country.length / ITEMS_PER_PAGE)}
+        onPageChange={handlePageChange}
+      />
+
 </div>
    </div>
 
