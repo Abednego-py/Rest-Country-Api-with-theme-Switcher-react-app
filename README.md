@@ -20,7 +20,7 @@ You may also see any lint errors in the console.
 
 ## Deployed app
 
-Visit this link to interact with app : https://64bd65d094201941788c6ef7--zesty-genie-575be1.netlify.app/
+Visit this link to interact with already deployed app : https://64bd65d094201941788c6ef7--zesty-genie-575be1.netlify.app/
 
 ## Features
 
